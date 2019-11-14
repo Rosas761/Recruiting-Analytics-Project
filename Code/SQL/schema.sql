@@ -1,32 +1,34 @@
+drop table Employee_Table Cascade
+drop table Assignment_Table Cascade
+drop table Hours_Worked Cascade
 
-
-
-
-CREATE TABLE EmployeeTable (
-AIdent INT Primary key,
-Activation Day Date,
-Branch Varchar,
-City Varchar,
-How Heard Of varchar,
-
+CREATE TABLE Employee_Table (
+AIdent INT Primary key ,
+Activation Date,
+Branch Varchar ,
+City Varchar ,
+How_Heard Varchar 
 );
 
-select * from AssignmentTable;
-CREATE TABLE Week2 (
-Performance Code varchar,
-AIdent INT Primary key,
-Start Day date,
-End day date,
-Pay Rate float,
-Bill Rate float,
+select * from Employee_Table
+
+CREATE TABLE Assignment_Table (
+Performance_Code Varchar ,
+AIdent INT  ,
+Activation date ,
+Completion date ,
+Pay_Rate float ,
+Bill_Rate float ,
 Margin float,
-
+ FOREIGN KEY(AIdent) REFERENCES  Employee_Table (AIdent)
 );
 
+select * from Assignment_Table
 
-CREATE TABLE Hours Worked (
-Aident INT Primary key,
-Hours Worked  INT,
-
+CREATE TABLE Hours_Worked (
+Aident INT,
+Hours_Worked float,
+FOREIGN KEY(AIdent) REFERENCES Employee_Table (AIdent)
 );
 
+--GET RID of VALUES IN HOURS WORK THAT ARENT IN EMP TABLE IN PYTHON 

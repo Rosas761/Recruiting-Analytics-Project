@@ -1,5 +1,4 @@
-Performance Code,AIdent,Start Day,End Day,Pay Rate,Bill Rate,Margin
-Open,225261,2/4/2018,,8,13.88,5.88
+Performance_Code,AIdent,Activation,Completion,Pay_Rate,Bill_Rate,Margin
 Assignment Terminated - No Reason Given,184514,8/9/2017,8/9/2017,8.15,11.82,3.67
 Complete,186334,9/20/2017,9/22/2017,8.15,11.17,3.02
 Complete,186555,9/20/2017,9/25/2017,8.15,11.17,3.02
