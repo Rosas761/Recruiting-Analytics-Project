@@ -1,19 +1,42 @@
 
---drop table SB_Data;
+drop table snider;
 
-CREATE TABLE SB_Data (
+CREATE TABLE Snider (
 Item_ID int Primary key, 
 AIdent INT,
 Activation Date,
 Completion Date,
-Pay_Rate float,
-Bill_Rate float,
-Margin float,
+Pay_Rate money,
+Bill_Rate money,
+Margin money,
 Hours_Worked float,
-Branch Varchar ,
-City Varchar ,
+Branch Varchar,
+City Varchar,
 How_Heard Varchar,
-profit float 
+Revenue money 
 );
 
-select * from SB_data
+select *
+from snider
+
+--Revenue by How_Heard
+
+select how_heard, sum(Revenue) as make_dat_money
+from snider
+group by how_heard
+order by make_dat_money desc
+
+--- Revenue by Branch
+
+select branch, sum(Revenue) as make_dat_money
+from snider
+group by branch
+order by make_dat_money desc
+
+
+-- Revenue by city 
+
+select city, sum(Revenue) as make_dat_money
+from snider
+group by city
+order by make_dat_money desc
