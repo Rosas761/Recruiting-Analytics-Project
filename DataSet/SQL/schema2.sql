@@ -1,5 +1,5 @@
 
-drop table snider;
+--drop table snider;
 
 CREATE TABLE Snider (
 Item_ID int Primary key, 
