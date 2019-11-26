@@ -22,7 +22,7 @@ cursor = conn.cursor()
 
 app = Flask(__name__)
 
-sql = "select * from snider"
+sql = "select sum(profit), how_heard from snider group by how_heard order by sum(profit) desc"
 
 cursor.execute(sql)
 for row in cursor.fetchall():

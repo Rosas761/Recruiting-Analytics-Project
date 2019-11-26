@@ -13,7 +13,7 @@ Hours_Worked float,
 Branch Varchar,
 City Varchar,
 How_Heard Varchar,
-Revenue money 
+profit money 
 );
 
 select *
@@ -21,14 +21,14 @@ from snider
 
 --Revenue by How_Heard
 
-select how_heard, sum(Revenue) as make_dat_money
+select how_heard, sum(profit) as make_dat_money
 from snider
 group by how_heard
 order by make_dat_money desc
 
 --- Revenue by Branch
 
-select branch, sum(Revenue) as make_dat_money
+select branch, sum(profit) as make_dat_money
 from snider
 group by branch
 order by make_dat_money desc
@@ -36,7 +36,7 @@ order by make_dat_money desc
 
 -- Revenue by city 
 
-select city, sum(Revenue) as make_dat_money
+select city, sum(profit) as make_dat_money
 from snider
 group by city
 order by make_dat_money desc
