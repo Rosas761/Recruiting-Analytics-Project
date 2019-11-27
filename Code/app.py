@@ -23,7 +23,28 @@ cursor = conn.cursor()
 
 app = Flask(__name__)
 
-sql = "select sum(profit), how_heard from snider group by how_heard order by sum(profit) desc"
+sql = "select * from snider"
+for row in cursor.fetchall():
+    my_data = []
+    print(row)
+    my_data.append(row)
+
+df = pd.DataFrame(my_data)
+table1 = df.rename(columns={0: "Revanue", 1: "How_Heard"})
+table1
+
+
+
+@app.route("/websites/<website>")
+def websites(website):
+   
+
+    print(table1)
+return jsonify(table1)
+
+
+
+
 
 
 @app.route("/")
@@ -32,21 +53,6 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/metadata/<sample>")
-def sample_metadata(sample):
-
-
-my_data = []
-for row in cursor.fetchall():
-    print(row)
-    my_data.append(row)
-
-df = pd.DataFrame(my_data)
-table1 = df.rename(columns={0: "Revanue", 1: "How_Heard"})
-table1
-
-print(sample_metadata)
-return jsonify(sample_metadata)
 
 if __name__ == "__main__":
     app.run()
