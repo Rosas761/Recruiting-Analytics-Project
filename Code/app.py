@@ -23,8 +23,12 @@ cursor = conn.cursor()
 
 app = Flask(__name__)
 
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-@app.route("/how_heard/<how_heard>")
+
+@app.route("/how_heard")
 def how_heard():
     
     sql = f"select sum(profit), how_heard from snider where How_Heard = '{how_heard}' group by how_heard order by sum(profit) desc"
@@ -44,9 +48,6 @@ def how_heard():
         
     }
     return jsonify(data)
-
-
-
 
 
 
