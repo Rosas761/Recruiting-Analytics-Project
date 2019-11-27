@@ -24,10 +24,10 @@ cursor = conn.cursor()
 app = Flask(__name__)
 
 
-@app.route("/websites/<website>")
-def websites(website):
+@app.route("/how_heard/<how_heard>")
+def how_heard():
     
-    sql = f"select sum(profit), how_heard from snider where How_Heard = '{website}' group by how_heard order by sum(profit) desc"
+    sql = f"select sum(profit), how_heard from snider where How_Heard = '{how_heard}' group by how_heard order by sum(profit) desc"
     cursor.execute(sql)
     for row in cursor.fetchall():
         my_data = []
@@ -38,13 +38,12 @@ def websites(website):
     table1 = df.rename(columns={0: "Revanue", 1: "How_Heard"})
     table1
     
-
-    print(table1)
-return jsonify(table1)
-
-
-
-
+    data = {
+        "Revanue": table1["Revanue"].tolist(),
+        "How_Heard": table1["How_Heard"].tolist(),
+        
+    }
+    return jsonify(data)
 
 
 
