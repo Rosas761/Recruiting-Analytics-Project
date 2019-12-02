@@ -30,7 +30,8 @@ def index():
 @app.route("/Sources")
 def Sources():
     Indeed = 'Indeed'
-    sql = f"select sum(Revenue), Sources from snider where Sources = '{Indeed}' group by Sources order by sum(Revenue) desc"
+    Craigslist = 'Craigslist'
+    sql = f"select sum(Revenue), Sources from snider where Sources = '{Indeed}' or Sources = '{Craigslist}' group by Sources order by sum(Revenue) desc"
     cursor.execute(sql)
     my_data = []
     for row in cursor.fetchall():
