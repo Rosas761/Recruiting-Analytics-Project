@@ -14,8 +14,7 @@ from sqlalchemy import create_engine
 from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 
-#url = "postgressql://postgres:postgres@localhost:5432/SB_Project"
-#conn = psycopg2.connect(url)
+
 conn = psycopg2.connect(dbname="SB_Project", user="postgres",
                         password="postgres", host="localhost", port="5432")
 
@@ -28,23 +27,24 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/how_heard")
-def how_heard():
-    
-    sql = f"select sum(profit), how_heard from snider where How_Heard = '{how_heard}' group by how_heard order by sum(profit) desc"
+@app.route("/Sources")
+def Sources():
+    Indeed = 'Indeed'
+    sql = f"select sum(Revenue), Sources from snider where Sources = '{Indeed}' group by Sources order by sum(Revenue) desc"
     cursor.execute(sql)
+    my_data = []
     for row in cursor.fetchall():
-        my_data = []
+        
         print(row)
         my_data.append(row)
 
     df = pd.DataFrame(my_data)
-    table1 = df.rename(columns={0: "Revanue", 1: "How_Heard"})
+    table1 = df.rename(columns={0: "Revenue", 1: "Sources"})
     table1
     
     data = {
-        "Revanue": table1["Revanue"].tolist(),
-        "How_Heard": table1["How_Heard"].tolist(),
+        "Revenue": table1["Revenue"].tolist(),
+        "Sources": table1["Sources"].tolist(),
         
     }
     return jsonify(data)

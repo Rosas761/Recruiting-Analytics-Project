@@ -1,4 +1,4 @@
-﻿Item_ID,AIdent,Activation,Completion,Pay_Rate,Bill_Rate,Margin,Hours_Worked,Branch,City,How_Heard,Profit
+﻿Item_ID,AIdent,Activation,Completion,Pay_Rate,Bill_Rate,Margin,Hours_Worked,Branch,City,Sources,Revenue
 676177,221756,1/3/2018,,30,38.28,8.28,288,03-Independence,Berea,Indeed,2384.64
 677179,224359,1/29/2018,2/12/2018,25,33,8,80,07-Columbus East,Hilliard,,640
 678357,224359,1/29/2018,,25,33,8,80,07-Columbus East,Hilliard,,640

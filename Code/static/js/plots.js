@@ -1,14 +1,17 @@
 function buildCharts() {
   var pie = d3.select("#pie");
-  var url2 = `/how_heard`;
+  var url3 = `/Sources`;
 
-  d3.json(url2).then(function (piedata) {
+  d3.json(url3).then(function (piedata) {
 
     pie.html("");
 
-    var graph_values = piedata.how_heard;
-    var graph_keys = piedata.Revanue;
+    var graph_keys = piedata.Sources;
+    var graph_values = piedata.Revenue;
 
+    console.log(graph_keys)
+    //console.log(graph_value)
+    console.log(piedata)
 
     var data = [{
       values: graph_values,
@@ -30,3 +33,5 @@ function buildCharts() {
 
 // Initialize the dashboard
 }
+
+buildCharts();

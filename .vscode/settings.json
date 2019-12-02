@@ -3,7 +3,7 @@
         {
             "database": "SB_Project",
             "dialect": "PostgreSQL",
-            "name": "localhost",
+            "name": "postgres",
             "password": "postgres",
             "port": 5432,
             "server": "localhost",
