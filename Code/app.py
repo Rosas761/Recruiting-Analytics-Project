@@ -54,7 +54,8 @@ def Sources():
 @app.route("/bar")
 def bar():
     cursor = conn.cursor()
-    sql2 = f"select avg(Revenue), Sources from snider where Sources is not null group by Sources order by avg(Revenue) desc"
+    Broadbean = ('Broadbean')
+    sql2 = f"select avg(Revenue), Sources from snider where Sources not in ('Broadbean') group by Sources order by avg(Revenue) desc"
     cursor.execute(sql2)
     my_data2 = []
     for row in cursor.fetchall():
