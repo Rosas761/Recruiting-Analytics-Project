@@ -29,9 +29,7 @@ def index():
 
 @app.route("/Sources")
 def Sources():
-    Indeed = 'Indeed'
-    Craigslist = 'Craigslist'
-    sql = f"select sum(Revenue), Sources from snider where Sources = '{Indeed}' or Sources = '{Craigslist}' group by Sources order by sum(Revenue) desc"
+    sql = f"select sum(Revenue), Sources from snider where Sources is not null group by Sources order by sum(Revenue) desc"
     cursor.execute(sql)
     my_data = []
     for row in cursor.fetchall():
@@ -40,17 +38,37 @@ def Sources():
         my_data.append(row)
 
     df = pd.DataFrame(my_data)
-    table1 = df.rename(columns={0: "Revenue", 1: "Sources"})
+    table1 = df.rename(columns={0: "SUM_Revenue", 1: "Sources"})
     table1
     
     data = {
-        "Revenue": table1["Revenue"].tolist(),
-        "Sources": table1["Sources"].tolist(),
+        "Revenue1": table1["SUM_Revenue"].tolist(),
+        "Sources1": table1["Sources"].tolist(),
         
     }
+
     return jsonify(data)
 
+@app.route("/bar")
+def bar():
+    sql2 = f"select avg(Revenue), Sources from snider where Sources is not null group by Sources order by avg(Revenue) desc"
+    cursor.execute(sql2)
+    my_data2 = []
+    for row in cursor.fetchall():
+        
+        print(row)
+        my_data2.append(row)
 
+    df2 = pd.DataFrame(my_data2)
+    table2 = df2.rename(columns={0: "AVG_Revenue", 1: "Sources"})
+    table2
+    
+    data2 = {
+        "Revenue2": table2["AVG_Revenue"].tolist(),
+        "Sources2": table2["Sources"].tolist(),
+    }
+
+    return jsonify(data2)
 
 if __name__ == "__main__":
     app.run()

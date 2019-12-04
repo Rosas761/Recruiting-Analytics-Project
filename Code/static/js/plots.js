@@ -1,16 +1,16 @@
-function buildCharts() {
+function buildCharts1() {
   var pie = d3.select("#pie");
+
   var url3 = `/Sources`;
 
   d3.json(url3).then(function (piedata) {
 
     pie.html("");
 
-    var graph_keys = piedata.Sources;
-    var graph_values = piedata.Revenue;
+    var graph_keys = piedata.Sources1;
+    var graph_values = piedata.Revenue1;
 
-    console.log(graph_keys)
-    //console.log(graph_value)
+
     console.log(piedata)
 
     var data = [{
@@ -26,12 +26,43 @@ function buildCharts() {
 
     Plotly.plot("pie", data, layout);
 
-
-
   });
+}
+
+  function buildCharts2() {
+    var plot = d3.select("#plot");
+    var url4 = `/bar`;
+  
+    d3.json(url4).then(function (bardata) {
+  
+      plot.html("");
+  
+      var graph_keys2 = bardata.Sources2;
+      var graph_values2 = bardata.Revenue2;
+  
+  
+      console.log(bardata)
+  
+      var data2 = [{
+        x: graph_values2,
+        y: graph_keys2,
+        type: "bar"
+      }];
+  
+      var layout2 = {
+        title: "'Bar Chart",
+        xaxis: { title: "Sources" },
+        yaxis: { title: "Average REV" }
+      };
+  
+      Plotly.newplot("plot", data2, layout2);
+  
+    });
 
 
 // Initialize the dashboard
 }
 
-buildCharts();
+buildCharts1();
+buildCharts2();
+
