@@ -18,7 +18,8 @@ from flask_sqlalchemy import SQLAlchemy
 conn = psycopg2.connect(dbname="SB_Project", user="postgres",
                         password="postgres", host="localhost", port="5432")
 
-cursor = conn.cursor()
+
+
 
 app = Flask(__name__)
 
@@ -29,6 +30,7 @@ def index():
 
 @app.route("/Sources")
 def Sources():
+    cursor = conn.cursor()
     sql = f"select sum(Revenue), Sources from snider where Sources is not null group by Sources order by sum(Revenue) desc"
     cursor.execute(sql)
     my_data = []
@@ -46,11 +48,12 @@ def Sources():
         "Sources1": table1["Sources"].tolist(),
         
     }
-
+    cursor.close()
     return jsonify(data)
 
 @app.route("/bar")
 def bar():
+    cursor = conn.cursor()
     sql2 = f"select avg(Revenue), Sources from snider where Sources is not null group by Sources order by avg(Revenue) desc"
     cursor.execute(sql2)
     my_data2 = []
@@ -67,7 +70,7 @@ def bar():
         "Revenue2": table2["AVG_Revenue"].tolist(),
         "Sources2": table2["Sources"].tolist(),
     }
-
+    cursor.close()
     return jsonify(data2)
 
 if __name__ == "__main__":

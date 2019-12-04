@@ -29,40 +29,38 @@ function buildCharts1() {
   });
 }
 
-  function buildCharts2() {
-    var plot = d3.select("#plot");
-    var url4 = `/bar`;
-  
-    d3.json(url4).then(function (bardata) {
-  
-      plot.html("");
-  
-      var graph_keys2 = bardata.Sources2;
-      var graph_values2 = bardata.Revenue2;
-  
-  
-      console.log(bardata)
-  
-      var data2 = [{
-        x: graph_values2,
-        y: graph_keys2,
-        type: "bar"
-      }];
-  
-      var layout2 = {
-        title: "'Bar Chart",
-        xaxis: { title: "Sources" },
-        yaxis: { title: "Average REV" }
-      };
-  
-      Plotly.newplot("plot", data2, layout2);
-  
-    });
+function buildCharts2() {
+  var plot = d3.select("#plot");
+  var url4 = `/bar`;
+
+  d3.json(url4).then(function (bardata) {
+
+    plot.html("");
+
+    var graph_keys2 = bardata.Sources2;
+    var graph_values2 = bardata.Revenue2;
 
 
-// Initialize the dashboard
+    console.log(bardata)
+
+    var data2 = [{
+      y: graph_values2,
+      x: graph_keys2,
+      type: "bar"
+    }];
+
+    var layout2 = {
+      title: "'Bar Chart",
+      xaxis: { title: "Sources" },
+      yaxis: { title: "Average REV" }
+    };
+
+    Plotly.newPlot("plot", data2, layout2);
+
+  });
+
 }
 
-buildCharts1();
 buildCharts2();
+buildCharts1();
 
