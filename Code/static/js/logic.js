@@ -67,7 +67,7 @@ var branches = [
   // Loop 
 for (var i = 0; i < branches.length; i++) {
 
-    // Conditionals for countries points
+    // Conditionals for amount of workers
     var color = "";
     if (branches[i].workers > 100) {
       color = "red";
