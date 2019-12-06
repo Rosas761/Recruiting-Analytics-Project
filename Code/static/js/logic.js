@@ -1,13 +1,13 @@
 var SBmap = L.map("map", {
     center: [40.154781, -84.818594],
-    zoom: 3
+    zoom: 7
   });
 
   L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
   maxZoom: 18,
   id: "mapbox.streets-basic",
-  accessToken: API_KEY //Note need this to work on all computers
+  accessToken: "pk.eyJ1Ijoicm9zYXM3NjEiLCJhIjoiY2syeXkzOGd4MDZxdTNjcWlvbDU0bDRsayJ9.P11ckMToLK6jd34E6ZT3bw" //Note need this to work on all computers
 }).addTo(SBmap);
 
 // Branch locations
@@ -69,14 +69,14 @@ for (var i = 0; i < branches.length; i++) {
 
     // Conditionals for amount of workers
     var color = "";
-    if (branches[i].workers > 100) {
-      color = "red";
+    if (branches[i].workers < 2000) {
+      color = "green";
     }
-    else if (branches[i].workers > 500) {
+    if (branches[i].workers < 800) {
       color = "yellow";
     }
-    else if (branches[i].workers > 1000) {
-      color = "green";
+    if (branches[i].workers < 200) {
+      color = "red";
     }
     else {
       color = "silver";
@@ -88,7 +88,7 @@ for (var i = 0; i < branches.length; i++) {
       color: "white",
       fillColor: color,
       // Adjust radius
-      radius: branches[i].points * 1500
+      radius: branches[i].workers * 50
     }).bindPopup("<h1>" + branches[i].name + "</h1> <hr> <h3>workers: " + branches[i].workers + "</h3>").addTo(SBmap);
   }
   
