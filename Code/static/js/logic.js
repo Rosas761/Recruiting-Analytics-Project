@@ -13,52 +13,27 @@ var SBmap = L.map("map", {
 // Branch locations
 var branches = [
     {
-      name: "Independence",
+      name: "Greater Cleveland - 3 Branches",
       location: [41.376723, -81.639248],
-      workers: 511
+      workers: 1501
     },
     {
-      name: "Elyria",
-      location: [41.369736, -82.107768],
-      workers: 377
-    },
-    {
-      name: "Akron",
-      location: [41.084457, -81.518349],
-      workers: 613
-    },
-    {
-      name: "Columbus East",
-      location: [39.995740, -82.919147],
-      workers: 707
-    },
-    {
-      name: "Columbus West",
+      name: "Columbus Area - 3 Branches",
       location: [40.027940, -83.103491],
-      workers: 442
+      workers: 1327
     },
     {
-      name: "Lancaster",
-      location: [39.713700, -82.59933],
-      workers: 178
-    },
-    {
-      name: "West Chester",
+      name: "Cincinnati Area - 2 Branches",
       location: [39.329734, -84.427795],
-      workers: 180
+      workers: 1272
     },
     {
-      name: "Florence",
-      location: [39.006781, -84.629776],
-      workers: 1092
-    },
-    {
-      name: "Chicago",
+      name: "Chicago - 1 Branch",
       location: [41.900421, -87.641065],
       workers: 1334
     },
     {
-      name: "Louisville",
+      name: "Louisville - 1 Branch",
       location: [38.246136, -85.763988],
       workers: 964
     },
@@ -69,17 +44,14 @@ for (var i = 0; i < branches.length; i++) {
 
     // Conditionals for amount of workers
     var color = "";
-    if (branches[i].workers < 2000) {
+    if (branches[i].workers < 1600) {
       color = "green";
     }
-    if (branches[i].workers < 800) {
+    if (branches[i].workers < 1400) {
       color = "yellow";
     }
-    if (branches[i].workers < 200) {
+    if (branches[i].workers < 1200) {
       color = "red";
-    }
-    else {
-      color = "silver";
     }
   
     // Add circles 
