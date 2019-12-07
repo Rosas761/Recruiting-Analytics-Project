@@ -20,8 +20,12 @@ function buildCharts1() {
     }];
 
     var layout = {
-      height: 600,
-      width: 600
+      height: 800,
+      width: 800,
+      title: "Total Revenue From Each Recruiting Source",
+      "titlefont": { "size": 30},
+      legend: { font: { size: 18}}
+
     };
 
     Plotly.plot("pie", data, layout);
@@ -50,9 +54,11 @@ function buildCharts2() {
     }];
 
     var layout2 = {
-      title: "Bar Chart",
-      xaxis: { title: "Branch" },
-      yaxis: { title: "Average REV" }
+      align: 'center',
+      title: "Average Revenue by Branch",
+      "titlefont": { "size": 36},
+      xaxis: { title: "Branch", titlefont: { size: 24} },
+      yaxis: { title: "Average Revenue", titlefont: { size: 28} } 
     };
 
     Plotly.newPlot("plot", data2, layout2);

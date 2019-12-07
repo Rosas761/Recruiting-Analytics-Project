@@ -7,11 +7,9 @@ var SBmap = L.map("map", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
   maxZoom: 18,
   id: "mapbox.streets-basic",
-<<<<<<< HEAD
+
   accessToken: "pk.eyJ1IjoiZmVyZ3VzMjE2IiwiYSI6ImNrM3FrODN4YjAyajEzY24zZDBldDZ3ODcifQ.dYJ7B8qZ0RSjHIMclRv-dQ" //Note need this to work on all computers
-=======
-  accessToken: "pk.eyJ1Ijoicm9zYXM3NjEiLCJhIjoiY2syeXkzOGd4MDZxdTNjcWlvbDU0bDRsayJ9.P11ckMToLK6jd34E6ZT3bw" //Note need this to work on all computers
->>>>>>> a70e7ceb8c6d029a41d2d712ec5e444b7e21d6b6
+
 }).addTo(SBmap);
 
 // Branch locations
