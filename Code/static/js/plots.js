@@ -37,7 +37,7 @@ function buildCharts2() {
 
     plot.html("");
 
-    var graph_keys2 = bardata.Sources2;
+    var graph_keys2 = bardata.Branch;
     var graph_values2 = bardata.Revenue2;
 
 
@@ -50,8 +50,8 @@ function buildCharts2() {
     }];
 
     var layout2 = {
-      title: "'Bar Chart",
-      xaxis: { title: "Sources" },
+      title: "Bar Chart",
+      xaxis: { title: "Branch" },
       yaxis: { title: "Average REV" }
     };
 

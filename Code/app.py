@@ -54,8 +54,8 @@ def Sources():
 @app.route("/bar")
 def bar():
     cursor = conn.cursor()
-    Broadbean = ('Broadbean')
-    sql2 = f"select avg(Revenue), Sources from snider where Sources not in ('Broadbean') group by Sources order by avg(Revenue) desc"
+    Lancaster = ('Lancaster')
+    sql2 = f"select avg(Revenue), Branch from snider where Branch not in ('Lancaster') group by Branch order by avg(Revenue) desc"
     cursor.execute(sql2)
     my_data2 = []
     for row in cursor.fetchall():
@@ -64,12 +64,12 @@ def bar():
         my_data2.append(row)
 
     df2 = pd.DataFrame(my_data2)
-    table2 = df2.rename(columns={0: "AVG_Revenue", 1: "Sources"})
+    table2 = df2.rename(columns={0: "AVG_Revenue", 1: "Branch"})
     table2
     
     data2 = {
         "Revenue2": table2["AVG_Revenue"].tolist(),
-        "Sources2": table2["Sources"].tolist(),
+        "Branch": table2["Branch"].tolist(),
     }
     cursor.close()
     return jsonify(data2)
