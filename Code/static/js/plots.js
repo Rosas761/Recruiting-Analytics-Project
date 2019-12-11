@@ -66,6 +66,40 @@ function buildCharts2() {
   });
 
 }
+function init() {
+var selector = d3.select("#selDataset");
+  // Use the list of sample names to populate the select options
+  d3.json("/branches").then((sampleBranch) => {
+    sampleBranch.forEach((sample) => {
+      selector
+        .append("option")
+        .text(sample)
+        .property("value", sample);
+    });
+    const firstBranch = sampleBranch[0];
+    // Use the first sample from the list to build the initial plots
+    buildTable(firstBranch);
+  });
+}
+function buildTable(branch) {
+  var table = d3.select("#sample-metadata");
+  var url = `/table/${branch}`;
+  console.log(url)
+  d3.json(url).then(function (results_list) {
+    console.log(results_list)
+    var data1 = results_list;
+    table.html("");
+    Object.entries(results_list).forEach(([key, value]) => {
+      table.append("h4").text(`${key}: ${value}`);
+    });
+  });
+}
+function optionChanged(newBranch) {
+  // Fetch new data each time a new sample is selected
+  buildTable(newBranch);
+};
+
+init();
 
 buildCharts2();
 buildCharts1();
